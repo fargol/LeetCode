@@ -1,42 +1,36 @@
 class Solution {
+
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-     ListNode *dummy= new ListNode(0);
-     ListNode *l3=dummy;
-     int carry=0;
-     while(l1!=NULL && l2!=NULL){
-         int digitValue=(l1->val+l2->val+carry)%10;
-         carry=(l1->val+l2->val+carry)/10;
-         ListNode *newNode=new ListNode(digitValue);
-         l3->next=newNode;
-         l3=newNode;
-         l1=l1->next;
-         l2=l2->next;
-     }
-     while(l1!=NULL){
-         int digitValue=(l1->val+carry)%10;
-         carry=(l1->val+carry)/10;
-         ListNode *newNode= new ListNode(digitValue);
-         l3->next=newNode;
-         l3=newNode;
-         l1=l1->next;
-       
-     }
-          while(l2!=NULL){
-              
-         int digitValue=(l2->val+carry)%10;
-         carry=(l2->val+carry)/10;
-         ListNode *newNode= new ListNode(digitValue);
-         l3->next=newNode;
-         l3=newNode;
-         l2=l2->next;
-     }
-     if(carry!=0){
-         ListNode *newNode= new ListNode(carry);
-         l3->next=newNode;
-         l3=newNode;
-     }
-     return dummy->next; 
-        
+
+    vector<vector<int> > threeSum(vector<int> &num) {
+
+        set<vector<int>> rs;
+        sort(num.begin(),num.end());
+        int i, j, k;
+        int n=num.size();
+        for(int i=0;i<n-2;i++){
+            j=i+1;
+            k=n-1;
+            while(j<k){
+                int sum=num[i]+num[j]+num[k];
+                if(sum==0){
+                    vector<int>tmp(3);
+                    tmp[0]=num[i];
+                    tmp[1]=num[j];
+                    tmp[2]=num[k];
+                    rs.insert(tmp);
+                    j++;
+                    k--;
+                }else if(sum>0){
+                    k--;
+                } else if(sum<0){
+                    j++;
+                }
+            }
+        }
+      vector<vector<int> result(rs.begin(),rs.end());
+      return result;
     }
+
 };
+

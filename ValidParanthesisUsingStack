@@ -1,0 +1,25 @@
+#include <stdio.h>
+class Solution{
+public:
+    bool isValid(string s){
+        if(s.size()==0) return true;
+        if(s.find("()")!=string::npos){
+            int index=s.find("()");
+            s.replace(index, 2, "");
+            return isValid(s);
+        }
+        else if(s.find("{}")!=string::npos){
+            int index=s.find("{}");
+            s.replace(index,2,"");
+            return isValid(s);
+        }
+        else if (s.find("[]")!=string::npos){
+            int index= s.find("[]");
+            s.replace(index,2,"");
+            return isValid(s);
+        }
+        else{
+            return false;
+        }
+    }
+};

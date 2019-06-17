@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+ struct Node{
+     int data;
+     Node* next; //store the address of next node
+ };
+ 
+
+  void Insert(Node** head,int x){
+     Node* temp =new Node();
+     temp->data=x;
+     temp->next=*head;
+     * head=temp;
+     
+     
+ }
+ void Print(Node* head){
+     //Node* temp =head;//we creat the temp, because we would lose the address of first node
+     while(head!=NULL){
+         cout<<head->data;
+         head=head->next;
+     }
+     
+ }
+ int main(){
+     Node* head=NULL;//LIST IS EMPTY
+     cout <<("hOW MANY NUMBERS:\N");
+     int n,x;
+     cin>>n;
+     for(int i=0; i<n;i++){
+         cout<<("Enter the numbers\n");
+         cin>>x;
+         //head=Insert(head,x);
+         Insert(&head,x);
+         Print(head);
+     }
+     
+     
+ }

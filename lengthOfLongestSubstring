@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int maxLength=0;
+        //creat a hash set
+        unordered_set<char> set;
+         int i=0;
+         int j=0;
+         while(j<s.length()){
+         // when we coudln't find the character, add the char and increase the j
+             if(set.find(s[j])== set.end()){
+                 set.insert(s[j]);
+                 j++;
+                 maxLength=max(maxLength,j-i);
+             } else{
+             // when we find duplicate char remove it from hashset and increase i
+                 set.erase(s[i]);
+                 i++;
+             }
+         }
+         return maxLength;
+    }
+};

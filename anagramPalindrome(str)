@@ -1,0 +1,31 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+bool isPlaindrome(string s){
+ unordered_map<char, int> H;
+ for(int i=0; i<s.size();i++){
+   H[s[i]]++;
+   
+ }
+
+  int odd_count=0;
+  for(auto elem: H){
+   
+    if((elem.second % 2)!=0) {
+      odd_count++;
+    }
+  }
+  if(odd_count>1) return false;
+  return true;
+}
+
+int main() {
+
+  bool result= isPlaindrome("carrace");
+	cout<<result;
+  bool res2 = isPlaindrome("abba");
+  cout<<res2;
+  bool res3 = isPlaindrome("carraceo");
+  cout<<res3;
+  return 0;
+}

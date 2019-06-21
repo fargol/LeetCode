@@ -1,0 +1,52 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+/*
+ * majorityElementTopTwo
+ *
+ * Write a function which accepts an array of integers and returns in a two item array 
+ * the top two integers in the input that appear most frequently.
+ *
+ * input: [4,3,1,3,1,2,2,1,4,4,4]
+ * output: [4, 1]
+ *
+ */
+
+vector<int> majorityElementTopTwo( vector<int> &s){
+      int biggestKey=0;
+      int biggestFreq=0;
+      int temp1=0;
+      int temp2=0;
+
+      int secondBiggestKey=0;
+      int secondBiggestFreq=0;
+  unordered_map <int, int> intFrequency;//value: frequency
+  for(int i=0; i<s.size();i++){
+    intFrequency[s[i]]++;
+  }
+  for ( auto elem: intFrequency){
+       
+      if((elem.second)>biggestFreq){
+        int temp1= biggestFreq;
+        int temp2=biggestKey;
+        biggestFreq=elem.second;
+        biggestKey=elem.first;
+        secondBiggestFreq=temp1;
+        secondBiggestKey=temp2;
+      }
+      
+
+  }
+  return vector<int>{biggestKey,secondBiggestKey};
+}
+
+int main() {
+vector<int> result;
+vector<int> t{4,3,1,3,1,2,2,1,4,4,4};
+result= majorityElementTopTwo(t);
+for(int i=0; i < result.size(); i++)
+      std::cout << result[i] << ' ';
+	
+}

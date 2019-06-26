@@ -1,0 +1,20 @@
+class Solution {
+public:
+     int myAtoi(string str) {
+    int sign=1,i=0,j;
+    long long int ans=0,mymax=INT_MAX,mymin=INT_MIN;
+    while(str[i]==' ')i++;
+    if(str[i]=='-')sign=-1,i++;
+    else if(str[i]=='+')i++;
+    while(i<str.length())
+    {
+        if(str[i]<'0'||str[i]>'9') break;
+        ans = ans*10+str[i++]-'0';
+        if(ans>=mymax+1)break;
+    }
+    ans= sign*ans;
+    if(ans>mymax) return mymax;
+    else if(ans<mymin) return mymin;
+    return ans;
+}
+};

@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int i;
+        set<int> numbers;
+        for(i=0;i<nums.size();i++)
+        {
+            if(numbers.find(nums[i])!=numbers.end())
+                return true;
+            else
+                numbers.insert(nums[i]);
+        }
+        return false;
+    }
+};
